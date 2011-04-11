@@ -1,0 +1,3 @@
+include README.rst LICENSE AUTHORS
+recursive-include django_pygments/templates *
+recursive-include django_pygments/static *

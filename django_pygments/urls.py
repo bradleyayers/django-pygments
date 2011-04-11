@@ -1,4 +1,5 @@
-from django.conf.urls.defaults import patterns, url
+from django.conf.urls.defaults import patterns
+
 
 urlpatterns = patterns(
     'django_pygments.views',

@@ -8,6 +8,7 @@ from pprint import pprint
 import re
 from django.utils.encoding import smart_unicode
 
+
 class ListHtmlFormatter(HtmlFormatter):
     def wrap(self, source, outfile):
         return self._wrap_div(self._wrap_pre(self._wrap_list(source)))
@@ -20,6 +21,7 @@ class ListHtmlFormatter(HtmlFormatter):
                 t = '<li><div class="line">%s</div></li>' % t
             yield i, t
         yield 0, '</ol>'
+
 
 def pygmentify_html(text, **kwargs):
     text = smart_unicode(text)
@@ -47,5 +49,3 @@ def pygmentify_html(text, **kwargs):
     for sub in subs:
         text = text.replace(sub[0], sub[1], 1)
     return text
-
-

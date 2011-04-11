@@ -1,9 +1,12 @@
+from __future__ import absolute_import
 from django import template
 from django.template.defaultfilters import stringfilter
 from django_pygments.utils import pygmentify_html
 from django.utils.safestring import mark_safe
 
+
 register = template.Library()
+
 
 @register.filter
 @stringfilter
@@ -16,6 +19,7 @@ def pygmentify(value):
         res = value
     return mark_safe(res)
 
+
 @register.filter
 @stringfilter
 def pygmentify_inline(value):
@@ -26,6 +30,7 @@ def pygmentify_inline(value):
         print u'value="%s"' % value
         res = value
     return mark_safe(res)
+
 
 class PygmentifyNode(template.Node):
     def __init__(self, nodelist):
@@ -40,9 +45,9 @@ class PygmentifyNode(template.Node):
             res = output
         return mark_safe(res)
 
+
 @register.tag
-def pygment(parser, token):
-    nodelist = parser.parse(('endpygment',))
+def pygmentify(parser, token):
+    nodelist = parser.parse(('endpygmentify',))
     parser.delete_first_token()
     return PygmentifyNode(nodelist)
-
